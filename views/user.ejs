@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User</title>
+    <style>
+        body {background: #F0F0F0;}
+        textarea {
+  margin-top: 10px;
+  margin-left: 50px;
+  -moz-border-bottom-colors: none;
+  -moz-border-left-colors: none;
+  -moz-border-right-colors: none;
+  -moz-border-top-colors: none;
+  background: none repeat scroll 0 0 rgba(0, 0, 0, 0.07);
+  border-color: -moz-use-text-color #FFFFFF #FFFFFF -moz-use-text-color;
+  border-image: none;
+  border-radius: 6px 6px 6px 6px;
+  border-style: none solid solid none;
+  border-width: medium 1px 1px medium;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12) inset;
+  color: #555555;
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size: 1em;
+  line-height: 1.4em;
+  padding: 5px 8px;
+  transition: background-color 0.2s ease 0s;
+}
+
+
+textarea:focus {
+    background: none repeat scroll 0 0 #FFFFFF;
+    outline-width: 0;
+}
+
+#logout{
+    position: absolute;
+    top: 50px;
+    right: 20px;
+}
+
+#button
+{
+    height: 50px;
+    color: #fff;
+    background-color: #162E4D;
+    padding: 10px;
+    border-radius: 8px;
+    width: 100px;
+    cursor: pointer;
+}
+
+
+    </style>
+</head>
+<body>
+    <div style="display: flex;justify-content: center;align-items: center; flex-direction: column;">
+       <h1>Hello <u><%= data?.userinfo?.fullName %></u></h1>
+       
+       <h3>You are Successfully Authorized !!</h3>
+       <hr style="width:50%;text-align:center; color: blue;">
+       
+       <div style="display: flex;">
+        <div>
+            <p style="text-align:center; color: red; font-size: 20px;"><u>Token Set</u></p>
+            <textarea rows="17" cols="80" style="margin-right:15px" spellcheck="false"class="ui-autocomplete-input" autocomplete="off" role="textbox" aria-autocomplete="list" aria-haspopup="true"  readonly>
+                <%= JSON.stringify(data.tokenSet,null,4) %> 
+            </textarea>
+        </div>
+        <div>
+            <p style="text-align:center; color: red; font-size: 20px;"><u>User Info</u></p>
+            
+
+                <textarea  rows="17" name="comment[text]" id="comment_text" cols="50" class="ui-autocomplete-input" autocomplete="off" role="textbox" aria-autocomplete="list" aria-haspopup="true" spellcheck="false" readonly>
+                <%= JSON.stringify(data.userinfo,null,4) %> 
+            </textarea>
+        </div>
+       
+       
+       </div>
+
+       <div id="logout">
+        <form action="/auth/logout">
+            <input id ="button" type="submit" value="Logout" />
+            </form>
+       </div>
+
+       
+
+     
+      
+    </div>
+    
+</body>
+
+
+</html>
